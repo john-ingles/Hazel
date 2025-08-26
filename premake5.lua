@@ -11,6 +11,13 @@ workspace "Hazel"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
+
+-- Include the premake5.lua file from our submodule fork of glfw
+include "Hazel/vendor/GLFW"
+
 project "Hazel"
 	location "Hazel"
 	kind "SharedLib"
@@ -31,7 +38,14 @@ project "Hazel"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
