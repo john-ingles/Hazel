@@ -14,7 +14,7 @@ namespace Hazel {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -47,6 +47,7 @@ namespace Hazel {
 		{
 			return GetCategoryFlags() & category;
 		}
+		inline bool IsHandled() const { return m_Handled; }
 	protected:
 		bool m_Handled = false;
 	};

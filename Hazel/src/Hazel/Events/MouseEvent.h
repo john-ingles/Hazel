@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Hazel {
 
 	class HAZEL_API MouseMovedEvent : public Event
@@ -66,6 +64,7 @@ namespace Hazel {
 
 	class HAZEL_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
+	public:
 		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button){}
 
@@ -81,6 +80,7 @@ namespace Hazel {
 
 	class HAZEL_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
+	public:
 		MouseButtonReleasedEvent(int button)
 			: MouseButtonEvent(button) {
 		}
